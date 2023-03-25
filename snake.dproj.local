@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/10/29 09:36:25.000.690,=C:\Users\Usuario\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/10/29 09:38:18.000.047,C:\Users\Usuario\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\form.dfm</Transaction>
+    <Transaction>2022/10/29 09:38:18.000.047,C:\Users\Usuario\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\form.pas</Transaction>
+    <Transaction>2022/10/29 09:38:23.000.564,C:\Users\Usuario\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\snake.dproj</Transaction>
+    <Transaction>2022/10/29 09:39:25.000.354,=D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\Unit1.pas</Transaction>
+    <Transaction>2022/10/29 09:40:17.000.525,D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\Unit1.pas=D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\models\UCEscenario.pas</Transaction>
+    <Transaction>2022/10/29 09:48:09.000.937,=D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\models\estructuras\UCMatriz.pas</Transaction>
+    <Transaction>2022/10/29 09:56:56.000.970,=D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\Unit1.pas</Transaction>
+    <Transaction>2022/10/29 09:57:33.000.067,D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\Unit1.pas=D:\00_materia\auxiliar\02_semestre\INF120\05_project\snake\models\UCCesped.pas</Transaction>
+    <Transaction>2022/11/05 09:40:57.000.612,=G:\auxiliar\02_semestre\INF120\05_project\snake\models\estructuras\URecord.pas</Transaction>
+    <Transaction>2022/11/05 09:57:07.000.116,=G:\auxiliar\02_semestre\INF120\05_project\snake\Unit1.pas</Transaction>
+    <Transaction>2022/11/05 09:57:25.000.945,G:\auxiliar\02_semestre\INF120\05_project\snake\models\UCSnake.pas=G:\auxiliar\02_semestre\INF120\05_project\snake\Unit1.pas</Transaction>
+    <Transaction>2022/11/10 22:43:30.000.307,=C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\Unit1.pas</Transaction>
+    <Transaction>2022/11/10 22:46:59.000.638,C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\UControllerGame.pas=C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\Unit1.pas</Transaction>
+    <Transaction>2022/11/11 17:34:21.000.465,=C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\Unit1.pas</Transaction>
+    <Transaction>2022/11/11 17:42:18.000.611,C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\Unit1.pas=C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\models\UCFood.pas</Transaction>
+    <Transaction>2022/11/11 18:15:46.000.967,=C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\Unit1.pas</Transaction>
+    <Transaction>2022/11/11 18:19:50.000.282,C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\models\UCPared.pas=C:\Users\dedas\OneDrive\Documentos\Embarcadero\Studio\Projects\Programación 1\02_semestre-master\02_semestre-master\INF120\05_project\snake\Unit1.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="models"/>
+    <File Path="models\estructuras"/>
+    <File Path="models\estructuras\UCMatriz.pas"/>
+    <File Path="models\estructuras\URecord.pas"/>
+    <File Path="models\UCCesped.pas"/>
+    <File Path="models\UCEscenario.pas"/>
+    <File Path="models\UCFood.pas"/>
+    <File Path="models\UCPared.pas"/>
+    <File Path="models\UCSnake.pas"/>
+    <File Path="form.pas"/>
+    <File Path="form.dfm"/>
+    <File Path="UControllerGame.pas"/>
+  </ProjectSortOrder>
+</BorlandProject>

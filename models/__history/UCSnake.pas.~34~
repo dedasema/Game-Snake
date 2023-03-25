@@ -1,0 +1,128 @@
+unit UCSnake;
+interface
+   uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,JPEG, ExtCtrls, pngimage,
+  URecord;
+  type
+   Snake = class
+   protected
+      imageWidth, imageHeight, f, c : word;
+      image : TJPegImage;
+      image1, image2, image3 : TPNGImage;
+      //url : String;
+      dir : Direction;
+      //newImage : TImage;
+    public
+      constructor CrearCabeza(width, height : integer); //virtual ;abstract;
+      constructor CrearCuerpo(width, height : integer);
+      constructor CrearCola(width, height : integer);
+      procedure Dibujar(t:TCanvas);  virtual ;//abstract;
+      procedure SetFil(f :word);
+      procedure SetCol(c :word);
+      procedure SetFilCol(f, c : word);
+      procedure SetNextPos(Nfil, Ncol : word);
+      procedure Moverse(k : word);
+      Procedure SetDirection(x:Direction);
+      function GetFil():word;
+      function GetCol():word;
+      function GetDirection():Direction;
+   end;
+implementation
+{ Snake }
+constructor Snake.CrearCabeza(width, height : integer);
+begin
+  image1 := TPNGImage.Create;
+  image1.LoadFromFile('cabeza-snake.png');
+  dir := Direction.derecha;
+  Self.imageWidth := width;
+  Self.imageHeight := height;
+end;
+constructor Snake.CrearCola(width, height: integer);
+begin
+   image3 := TPNGImage.Create;
+  image3.LoadFromFile('cabeza-snake.png');
+  dir := Direction.derecha;
+  Self.imageWidth := width;
+  Self.imageHeight := height;
+end;
+
+constructor Snake.CrearCuerpo(width, height: integer);
+begin
+  image2 := TPNGImage.Create;
+  image2.LoadFromFile('cabeza-snake.png');
+  dir := Direction.derecha;
+  Self.imageWidth := width;
+  Self.imageHeight := height;
+end;
+
+procedure Snake.Dibujar(t: TCanvas);
+begin
+    t.StretchDraw(
+  RECT(c*imageWidth, f*imageHeight, c*imageWidth +imageWidth, f*imageHeight+imageHeight),
+   Self.image1);
+   t.StretchDraw(
+  RECT(c*imageWidth, f*imageHeight, c*imageWidth +imageWidth, f*imageHeight+imageHeight),
+   Self.image2);
+   t.StretchDraw(
+  RECT(c*imageWidth, f*imageHeight, c*imageWidth +imageWidth, f*imageHeight+imageHeight),
+   Self.image3);
+end;
+function Snake.GetCol: word;
+begin
+   Result := Self.c;
+end;
+function Snake.GetDirection: Direction;
+begin
+    Result:= self.dir;
+end;
+
+function Snake.GetFil: word;
+begin
+   Result := Self.f;
+end;
+
+procedure Snake.Moverse(k: word);
+begin
+  if (k = 37) and (self.dir <> Direction.derecha) then//izquierda
+    Self.dir := Direction.izquierda
+  else if (k = 38) and (self.dir <> Direction.inferior) then  //superior
+    Self.dir := Direction.superior
+  else if (k = 39) and (self.dir <> Direction.izquierda) then  //derecha
+    Self.dir := Direction.derecha
+  else if (k = 40) and (self.dir <> Direction.superior) then  //inferior
+    Self.dir := Direction.inferior;
+end;
+
+procedure Snake.SetCol(c: word);
+begin
+  Self.c := c;
+end;
+procedure Snake.SetDirection(x: Direction);
+begin
+    Self.dir:=x;
+end;
+
+procedure Snake.SetFil(f: word);
+begin
+  Self.f := f;
+end;
+procedure Snake.SetFilCol(f, c: word);
+begin
+  Self.f := f;
+  Self.c := c;
+end;
+
+//siguiente posicion para avanzar
+procedure Snake.SetNextPos(Nfil, Ncol: word);
+begin
+    if dir = Direction.inferior then
+    Self.f := (f+1) mod NFil
+  else if dir = Direction.izquierda then
+    self.c := (c-1+NCol) mod NCol
+  else if dir = Direction.superior then
+    self.f := (f-1+NFil) mod NFil
+  else if dir = Direction.derecha then
+    self.c := (c+1) mod NCol;  //c+1 mod 4
+end;
+
+end.

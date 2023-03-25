@@ -1,0 +1,156 @@
+unit UCEscenario;
+
+interface
+
+uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,UCMatriz, UCCesped, UCSnake, URecord, UCFood, UCPared;
+type
+    Escenario = class
+
+    private
+      imageWidth, imageHeight : Cardinal;
+      m : Matriz;
+      cesp : Cesped;
+      cabeza, cola, cuerpo : Snake;
+      f: Food;
+      p: Pared;
+    public
+      constructor Crear(width, height : integer);
+      procedure Dibujar(t : Tcanvas);
+      function getCabeza():snake;
+      function getCola():snake;
+      function getMatriz():matriz;
+      function getComida():food;
+      function getimagewidth():word;
+      function getimageheight():word;
+    end;
+
+implementation
+{ Escenario }
+
+constructor Escenario.Crear(width, height : integer);
+var
+  i,j:byte;
+begin
+  //Creo la matriz
+  m := Matriz.Create;
+  m.SetFilas(30);
+  m.SetColumnas(30);
+
+  //Obtengo el ancho y alto de las celdas
+  Self.imageWidth := width div m.GetColumnas ;
+  self.imageHeight := height div m.GetFilas;
+
+  //Creo el cesped
+  Self.cesp := Cesped.Crear(Self.imageWidth, self.imageHeight);
+
+  //Creo la serpiente
+  self.cabeza := Snake.CrearCabeza(Self.imageWidth, self.imageHeight);
+  self.cabeza.SetFilCol(3, 3);
+  self.cuerpo := Snake.CrearCuerpo(Self.imageWidth, self.imageHeight);
+  self.cuerpo.SetFilCol(3, 2);
+  self.cola := Snake.CrearCola(Self.imageWidth, self.imageHeight);
+  self.cola.SetFilCol(3, 1);
+  m.ModValor(3, 3, 2, Direction.derecha);
+  m.ModValor(3, 2, 2, Direction.derecha);
+  m.ModValor(3, 1, 2, Direction.derecha);
+
+  //Creo la pared
+  self.p:= Pared.Crearpared(Self.imageWidth, self.imageHeight);
+  for j := 0 to m.GetColumnas-1 do begin
+    m.ModValor(1, j, 1, Direction.null);
+    m.ModValor(m.GetFilas-1, j, 1, Direction.null);
+  end;
+
+  for i := 1 to m.GetFilas-1 do begin
+    m.ModValor(i, 0, 1, Direction.null);
+    m.ModValor(i, m.GetColumnas-1, 1, Direction.null);
+  end;
+
+  //Creo la comida
+  self.f:=Food.Crearcomida(Self.imageWidth, self.imageHeight);
+  m.ModValor(f.GetFil,f.GetCol, 3, Direction.null);
+
+end;
+
+
+procedure Escenario.Dibujar(t: Tcanvas);
+var
+  I: Integer;
+  j: Integer;
+  e : byte;
+begin
+  for I := 1 to m.GetFilas-1 do begin
+    for j := 0 to m.GetColumnas-1 do begin
+
+      cesp.SetFilCol(i, j);
+      cesp.Dibujar(t);                //Dibujo el cesped
+
+      cabeza.Dibujar(t);              //Dibujo la cabeza
+      cola.Dibujar(t);                //Dibujo la cola
+      e := m.ObtValor(i,j).valor;
+
+      if e = 1 then             //Es pared
+      begin
+        p.SetFilCol(i,j);
+        p.Dibujar(t);
+      end
+
+      else if e = 2 then begin        //Es serpiente
+          if not ((cabeza.GetFil = i) and (cabeza.Getcol = j) or
+             (cola.GetFil = i) and (cola.GetCol = j)) then
+             Begin
+                cuerpo.SetFilCol(i,j);
+                cuerpo.Dibujar(t);
+             End;
+
+      end
+
+      else if (e = 3) then
+         begin
+            f.Dibujar(t);
+         End;
+
+    end;
+  end;
+
+end;
+
+function Escenario.getCabeza(): snake;
+begin
+    Result:= self.cabeza;
+end;
+
+function Escenario.getCola: snake;
+begin
+    Result:= self.cola;
+end;
+
+function Escenario.getComida: food;
+begin
+    Result:= self.f;
+end;
+
+function Escenario.getimageheight: word;
+begin
+    Result:=self.imageWidth;
+end;
+
+function Escenario.getimagewidth: word;
+begin
+   Result:=self.imageHeight;
+end;
+
+function Escenario.getMatriz: matriz;
+begin
+    Result:= self.m;
+end;
+
+//      if ((j<=19) and (i=0)) or ((i<=19) and (j=0)) or ((j<=19) and (i=19)) or ((i<=19) and (j=19)) then
+//      Begin
+//         p.SetFilCol(i,j);
+//         m.ModValor(i,j, 1, Direction.null);
+//      End;
+
+
+end.

@@ -1,0 +1,55 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'Form1'
+  ClientHeight = 768
+  ClientWidth = 1366
+  Color = clBtnFace
+  DoubleBuffered = True
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -29
+  Font.Name = 'Tahoma'
+  Font.Style = [fsBold]
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  OnDblClick = FormDblClick
+  OnKeyDown = FormKeyDown
+  OnPaint = FormOnPaint
+  PixelsPerInch = 96
+  TextHeight = 35
+  object Label1: TLabel
+    Left = 0
+    Top = 0
+    Width = 1366
+    Height = 37
+    Align = alTop
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'SNAKE'
+    Color = clRed
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -29
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+    OnClick = Label1Click
+  end
+  object Timer1: TTimer
+    Interval = 50
+    OnTimer = Timer1Timer
+    Left = 32
+    Top = 16
+  end
+  object Timer2: TTimer
+    Interval = 300
+    OnTimer = Timer2Timer
+    Left = 80
+    Top = 16
+  end
+end

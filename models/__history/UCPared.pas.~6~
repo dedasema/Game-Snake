@@ -1,0 +1,63 @@
+unit UCPared;
+
+interface
+uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ExtCtrls, pngimage;
+
+type
+    Pared = class
+    protected
+      imageWidth, imageHeight, f, c : word;
+      img: TPNGImage;
+    public
+      constructor Crearpared(width, height : integer);
+      procedure Dibujar(t:TCanvas);  virtual ;//abstract;
+      procedure SetFil(f :word);
+      procedure SetCol(c :word);
+      procedure SetFilCol(f, c : word);
+      function GetFil():word;
+      function GetCol():word;
+    end;
+implementation
+
+{ Food }
+
+constructor Pared.Crearpared(width, height: integer);
+begin
+  img := TPNGImage.Create;
+  img.LoadFromFile('block.png');
+  Self.imageWidth := width;
+  Self.imageHeight := height;
+end;
+
+procedure Pared.Dibujar(t: TCanvas);
+begin
+    t.StretchDraw(
+  RECT(19*imageWidth, 1*imageHeight, 19*imageWidth +imageWidth, 18*imageHeight+imageHeight),
+   Self.img);
+end;
+
+function Pared.GetCol: word;
+begin
+   Result := Self.c;
+end;
+function Pared.GetFil: word;
+begin
+   Result := Self.f;
+end;
+
+procedure Pared.SetCol(c: word);
+begin
+  Self.c := c;
+end;
+procedure Pared.SetFil(f: word);
+begin
+  Self.f := f;
+end;
+procedure Pared.SetFilCol(f, c: word);
+begin
+  Self.f := f;
+  Self.c := c;
+end;
+
+end.
